@@ -1,0 +1,13 @@
+{
+  "name": "Trener",
+  "short_name": "Trener",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#e8eef8",
+  "theme_color": "#1e3a8a",
+  "lang": "nb",
+  "icons": [
+    { "src": "icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

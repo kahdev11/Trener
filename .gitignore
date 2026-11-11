@@ -1,0 +1,18 @@
+# ALDRI data i repoet – kun appens oppsett/kode.
+# Sikkerhetskopier og eksporter
+trener-backup*.json
+*backup*.json
+*.xlsx
+*.xls
+*.csv
+private/
+data/
+seed*
+*.local.*
+# verktøy
+.idea/
+dist/
+build.js
+node_modules/
+.DS_Store
+Thumbs.db

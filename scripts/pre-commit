@@ -1,0 +1,3 @@
+#!/bin/sh
+# Kopieres til .git/hooks/pre-commit (git-hooks følger ikke med repoet automatisk)
+node scripts/privacy-check.js || exit 1
