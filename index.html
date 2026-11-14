@@ -18,11 +18,11 @@
   --fill:rgba(120,120,128,.12);--blue:#007aff;--green:#34c759;--orange:#ff9500;--red:#ff3b30;
   --bar:rgba(249,249,249,.82);
 }
-@media (prefers-color-scheme:dark){:root{
+:root[data-mode=dark]{color-scheme:dark;
   --bg:#000;--card:#1c1c1e;--label:#fff;--sec:#8e8e93;--ter:#48484a;--sep:rgba(84,84,88,.55);
   --fill:rgba(120,120,128,.24);--blue:#0a84ff;--green:#30d158;--orange:#ff9f0a;--red:#ff453a;
   --bar:rgba(29,29,30,.82);
-}}
+}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--label);font:17px/1.35 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI Variable","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -38,7 +38,7 @@ h2{font-size:13px;font-weight:400;text-transform:uppercase;letter-spacing:.2px;c
 .seg{display:flex;background:var(--fill);border-radius:9px;padding:2px;margin:4px 0 6px}
 .seg button{flex:1;padding:6px 0;border-radius:7px;font-size:14px;font-weight:500}
 .seg button.on{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.14),0 0 0 .5px rgba(0,0,0,.04);font-weight:600}
-@media (prefers-color-scheme:dark){.seg button.on{background:#636366}}
+:root[data-mode=dark] .seg button.on{background:#636366}
 .search{width:100%;border:0;background:var(--fill);border-radius:10px;padding:8px 12px;font-size:17px;margin:6px 0 2px;outline:0}
 .search::placeholder{color:var(--sec)}
 .grp{background:var(--card);border-radius:12px;overflow:hidden}
@@ -155,6 +155,21 @@ body{background-image:var(--bgimg);background-attachment:fixed}
 :root[data-theme=hall] .hero::before{background:none;border:3px solid #ffb347;width:200px;height:200px;right:-70px;top:auto;bottom:-120px}
 :root[data-theme=hall] .hero::after{background:none;border:2px dashed rgba(255,255,255,.45);width:290px;height:290px;left:auto;right:-115px;bottom:-165px}
 :root[data-theme=hall] .seg button.on{background:#fff}
+:root[data-theme=pitch][data-mode=dark]{color-scheme:dark;--bg:#07120b;--card:#11231a;--label:#e9f6ee;--sec:#8fa89a;--ter:#4b6154;--sep:rgba(160,225,190,.16);--fill:rgba(120,210,155,.13);--blue:#2fd27f;--green:#34d27b;--orange:#fbbf24;--red:#fb7185;--bar:rgba(9,22,15,.9);--shadow:0 2px 10px rgba(0,0,0,.45);--btn:linear-gradient(135deg,#0f8a4d,#19b866)}
+:root[data-theme=hall][data-mode=dark]{color-scheme:dark;--bg:#070d1c;--card:#101a33;--label:#e8eeff;--sec:#93a0c4;--ter:#4a5678;--sep:rgba(150,175,255,.17);--fill:rgba(110,140,255,.14);--blue:#5b8cff;--green:#34d27b;--orange:#fbbf24;--red:#fb7185;--bar:rgba(9,15,32,.9);--shadow:0 2px 10px rgba(0,0,0,.45);--btn:linear-gradient(135deg,#2358e6,#4b86ff)}
+:root[data-mode=dark][data-theme] .seg button.on{background:#3a4357}
+:root[data-mode=dark]{--s1:#3a86e0;--s2:#dd5c35;--s3:#1ca06e;--s4:#b87d00;--s5:#d45a8a}
+.lock{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px}
+.lk-t{font-size:34px;font-weight:700}
+.lk-d{display:flex;gap:14px;margin:8px 0 12px}.lk-d i{width:14px;height:14px;border-radius:50%;border:2px solid var(--blue)}.lk-d i.on{background:var(--blue)}
+.lk-pad{display:grid;grid-template-columns:repeat(3,76px);gap:14px}
+.lk-pad button{height:76px;border-radius:50%;background:var(--fill);font-size:28px;font-weight:500}
+.lk-pad button:active{background:var(--ter)}
+.sb{display:flex;gap:6px;flex-wrap:wrap;padding:0 16px 10px}
+.sb button{background:var(--fill);border-radius:10px;padding:6px 10px;font-size:15px;min-width:56px}
+.sb button.has{background:var(--blue);color:#fff}
+.sb.dec button{outline:2px solid var(--red);outline-offset:-2px}
+.mk .on.i{background:var(--ter);color:#fff}
 .nag{display:block;width:100%;text-align:left;background:rgba(245,158,11,.18);color:var(--label);border-radius:12px;padding:10px 14px;font-size:14px;margin:0 0 8px}
 /* statistikk */
 :root{--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4}
@@ -187,7 +202,7 @@ details.tv summary{color:var(--blue);cursor:pointer;padding:4px 0}
 .badge{font-size:12px;font-weight:600;color:var(--orange)}
 .dot.abs{background:var(--red)}
 .mk{display:flex;gap:6px}
-.mk button{width:38px;height:34px;border-radius:9px;background:var(--fill);font-size:16px}
+.mk button{width:40px;height:40px;border-radius:9px;background:var(--fill);font-size:16px}
 .mk .on.p{background:var(--green);color:#fff}.mk .on.l{background:var(--orange);color:#fff}.mk .on.a{background:var(--red);color:#fff}
 /* flytende tab-bar */
 .tabbar{left:50%;right:auto;transform:translateX(-50%);width:calc(100% - 24px);max-width:520px;bottom:max(10px,env(safe-area-inset-bottom));border-radius:28px;border:1px solid var(--cardbd);padding:8px 0;box-shadow:0 10px 30px rgba(0,0,0,.22)}
@@ -210,18 +225,49 @@ const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
 const cls=v=>v>=8?'g':v>=6?'o':'r';
 const SPORTS={handball:'Håndball',football:'Fotball'};
 const CATS=['Oppvarming','Teknikk','Spill','Forsvar','Lek og konkurranse','Fysisk','Annet'];
-const GROUPS=['Teknisk','Sosialt og holdning','Spesifikt og fysisk'];
+const GROUPS=['Teknisk','Sosialt og holdning','Spesifikt og fysisk','Spill og lederskap','Keeper'];
+/* Standardkriterier per idrett: [navn, gruppe-indeks, o=kun utespillere]. Brukes ved ny start og legges til (aldri fjernes) ved oppgradering. */
+function defCrit(sp){
+  const T=0,S=1,F=2,P=3,K=4,out=[];
+  const add=(g,list,o)=>list.forEach(n=>out.push([n,g,o?1:0]));
+  if(sp==='football'){
+    add(T,['Pasning','Mottak','Førsteberøring','Ballkontroll']);
+    add(T,['Dribling','Hodespill','Forsvarsteknikk'],1);
+    add(P,['Overblikk','Samspill','Spilleforståelse','Posisjonsspill','Lederskap (kapteinstype)','Kommunikasjon']);
+    add(P,['Press'],1);
+    add(S,['Fokus','Innsats','Holdning','Punktlighet','Lagspiller','Lytter til instruks','Trenbarhet','Tøffhet']);
+    add(F,['Fart','Løpskraft','Spenst','Utholdenhet','Styrke','Balanse og koordinasjon']);
+    add(F,['Skudd','Finte'],1);
+    add(K,['Redninger','Posisjonering','Reaksjon','Høye innlegg','1 mot 1','Utspill med hendene','Utspark og fotbruk','Kommandering','Mot']);
+  }else{
+    add(T,['Pasning','Mottak','Ballkontroll','Kastarm']);
+    add(T,['Forsvarsteknikk','Hoppskudd','Bakkeskudd','Skudd fra kant','Straffekast','Skuddvariasjon','Kroppsfinte','Skuddfinte','Pasningsfinte','Strekspill','Sperrer','Strekavslutning'],1);
+    add(P,['Overblikk','Samspill','Spilleforståelse','Ledertype','Kommunikasjon','Omstilling']);
+    add(S,['Fokus','Innsats','Holdning','Punktlighet','Lagspiller','Lytter til instruks','Trenbarhet','Tøffhet']);
+    add(F,['Løpskraft','Spenst','Fart','Styrke']);
+    add(F,['Skudd','Finte'],1);
+    add(K,['Redninger','Posisjonering','Reaksjon','Strafferedning','Utkast og igangsetting','Kontringsstart','Kommandering','Mot']);
+  }
+  return out.map(([n,g,o])=>{const c={n,g:GROUPS[g]};if(o)c.o=1;return c});
+}
+/* kriterier som gjelder en bestemt spiller: keeper får keeper-gruppen, utespiller får ikke den */
+const BOTH='Både utespiller og keeper';
+const isKeeperish=p=>!!(p.gk||p.both);
+const roleTxt=p=>p.both?BOTH:p.gk?'Keeper':'Utespiller';
+const critFor=p=>db.criteria[p.sport].filter(c=>p.both?true:p.gk?(c.g==='Keeper'||!c.o):c.g!=='Keeper');
 
 /* ---------- tom startstruktur (ingen data i koden) ---------- */
+/* finn eller lag øvelse i øvelsesbanken (egne poster i planer havner automatisk her) */
+function exIn(d,sport,name,cat){
+  name=(name||'Post').trim();
+  let e=d.exercises.find(x=>x.sport===sport&&x.name.trim().toLowerCase()===name.toLowerCase());
+  if(!e){e={id:uid(),sport,name,cat:cat||'Annet',desc:'',sessions:[]};d.exercises.push(e)}
+  return e;
+}
+function delEx(e){db.plans.forEach(p=>{p.items=p.items.filter(i=>i.exId!==e.id)});db.exercises=db.exercises.filter(x=>x!==e);R.id=null}
 function seed(){
-  const crit=sp=>{
-    const tech=sp==='football'?['Pasning','Førsteberøring','Ballkontroll','Dribling','Forsvarsteknikk']:['Pasning','Mottak','Ballkontroll','Forsvarsteknikk'];
-    return [].concat(
-      tech.map(n=>({n,g:GROUPS[0]})),
-      ['Fokus','Innsats','Holdning','Punktlighet','Lagspiller','Lytter til instruks','Trenbarhet'].map(n=>({n,g:GROUPS[1]})),
-      ['Skudd','Finte','Løpskraft','Spenst','Spilleforståelse'].map(n=>({n,g:GROUPS[2]})));
-  };
-  const db={v:2,attendance:[],matches:[],sport:'handball',criteria:{handball:crit('handball'),football:crit('football')},players:[],exercises:[],plans:[],comps:[]};
+  const crit=defCrit;
+  const db={v:4,attendance:[],matches:[],sport:'handball',criteria:{handball:crit('handball'),football:crit('football')},players:[],exercises:[],plans:[],comps:[]};
   return migrate(db);
 }
 
@@ -236,6 +282,21 @@ function migrate(d){
       ['Punktlighet','Holdning'].forEach(n=>{if(!cr.some(c=>c.n===n)){const i=cr.findIndex(c=>c.n==='Innsats');cr.splice(i>=0?i+1:cr.length,0,{n,g:'Sosialt og holdning'})}});
     });
     d.v=2;
+  }
+  if((d.v||1)<3){
+    Object.keys(d.criteria).forEach(sp=>{const cr=d.criteria[sp],def=defCrit(sp);
+      def.forEach(c=>{
+        const ex=cr.find(x=>x.n===c.n);
+        if(ex){if(c.o&&ex.o==null)ex.o=1;return}
+        let at=-1;cr.forEach((x,i)=>{if(x.g===c.g)at=i});
+        cr.splice(at>=0?at+1:cr.length,0,c);
+      });
+    });
+    d.v=3;
+  }
+  if((d.v||1)<4){
+    (d.plans||[]).forEach(p=>(p.items||[]).forEach(i=>{if(!i.exId&&i.text){const e=exIn(d,p.sport,i.text,'Annet');i.exId=e.id;delete i.text}}));
+    d.v=4;
   }
   delete d.theme;return d;
 }
@@ -263,10 +324,29 @@ const app=document.getElementById('app');
 const sportPl=()=>db.players.filter(p=>p.sport===db.sport);
 const crit=()=>db.criteria[db.sport];
 const byId=(arr,id)=>arr.find(x=>x.id===id);
-function render(keep){applyTheme();if(typeof hideTip==='function')hideTip();const y=keep?scrollY:0;app.innerHTML='<div class="screen'+(keep?'':' anim')+'">'+view()+'</div>'+tabbar();scrollTo(0,y)}
+function render(keep){applyTheme();if(LOCKED){app.innerHTML=lockView();return}if(typeof hideTip==='function')hideTip();const y=keep?scrollY:0;app.innerHTML='<div class="screen'+(keep?'':' anim')+'">'+view()+'</div>'+tabbar();scrollTo(0,y)}
 
 /* ---------- temaer ---------- */
-function applyTheme(){document.documentElement.dataset.theme=db.sport==='football'?'pitch':'hall'}
+/* utseende og skjermlås lagres per enhet, utenfor dataene (følger ikke med sikkerhetskopi) */
+const UIK='trener.v1.ui',PINK='trener.v1.pin';
+let UI={mode:'auto'};try{UI=Object.assign(UI,JSON.parse(localStorage.getItem(UIK)||'{}'))}catch(e){}
+const mq=typeof matchMedia==='function'?matchMedia('(prefers-color-scheme: dark)'):null;
+if(mq&&mq.addEventListener)mq.addEventListener('change',()=>applyTheme());
+function resolvedMode(){return UI.mode==='dark'||(UI.mode==='auto'&&mq&&mq.matches)?'dark':'light'}
+function applyTheme(){const r=document.documentElement.dataset;r.theme=db.sport==='football'?'pitch':'hall';r.mode=resolvedMode()}
+function pinGet(){try{return JSON.parse(localStorage.getItem(PINK)||'null')}catch(e){return null}}
+function pinHash(pin,salt){let a=0xdeadbeef,b=0x41c6ce57;const t=salt+pin;for(let r=0;r<3000;r++)for(let i=0;i<t.length;i++){const c=t.charCodeAt(i)+r;a=Math.imul(a^c,2654435761);b=Math.imul(b^c,1597334677)}a=Math.imul(a^(a>>>16),2246822507)^Math.imul(b^(b>>>13),3266489909);return (a>>>0).toString(16)+(b>>>0).toString(16)}
+let LOCKED=!!pinGet(),PINBUF='',HID=0;
+function lockNow(){if(!pinGet())return;try{closeSheet()}catch(e){}LOCKED=true;PINBUF='';render()}
+function lockView(){
+  const len=(pinGet()||{}).len||4;
+  return '<div class="lock"><div class="lk-t">Trener</div><div class="sub">Skriv inn PIN</div><div class="lk-d">'+Array.from({length:len},(_,i)=>'<i class="'+(i<PINBUF.length?'on':'')+'"></i>').join('')+'</div><div class="lk-pad">'+['1','2','3','4','5','6','7','8','9','','0','⌫'].map(k=>k===''?'<span></span>':'<button data-a="'+(k==='⌫'?'pinback':'pin')+'" data-id="'+k+'">'+k+'</button>').join('')+'</div><button class="lnk" data-a="pinforgot" style="margin-top:10px">Glemt PIN?</button></div>';
+}
+function uiBlock(){
+  const m=UI.mode,pin=pinGet();
+  return '<h2>Utseende</h2><div class="seg">'+[['auto','Automatisk'],['light','Lys'],['dark','Mørk']].map(([k,l])=>'<button class="'+(m===k?'on':'')+'" data-a="uimode" data-id="'+k+'">'+l+'</button>').join('')+'</div>'+
+  '<h2>Skjermlås</h2><div class="grp">'+(pin?'<button class="row" data-a="locknow"><span class="main t" style="color:var(--blue)">Lås appen nå</span></button><button class="row" data-a="pinoff"><span class="main t" style="color:var(--red)">Fjern PIN</span></button>':'<button class="row" data-a="pinset"><span class="main t" style="color:var(--blue)">Sett PIN-kode (4 siffer)</span></button>')+'</div><p class="sub" style="margin:8px 16px">'+(pin?'Appen låses etter 1 minutt i bakgrunnen. ':'')+'PIN er en skjermlås som holder nysgjerrige ute. Den krypterer ikke dataene. Glemmer du PIN, må du slette dataene på enheten og gjenopprette fra sikkerhetskopi.</p>';
+}
 const title=t=>'<h1>'+t+'</h1>'+backupNag();
 function backupNag(){
   if(!db.players.length&&!db.exercises.length)return '';
@@ -362,19 +442,20 @@ function exDetail(){
   h+=`<div class="stats"><div class="stat"><b>${s.avg==null?'–':n1(s.avg)}</b><span>Snittscore</span></div><div class="stat"><b>${s.n}</b><span>Ganger brukt</span></div><div class="stat"><b>${s.last?fd(s.last):'–'}</b><span>Sist brukt</span></div></div>`;
   h+='<button class="btn" data-a="sesnew">Logg gjennomføring</button><h2>Historikk</h2>';
   h+=ss.length?'<div class="grp">'+ss.map(x=>`<button class="row" data-a="sesedit" data-id="${x.id}"><div class="main"><span class="t">${fd(x.date)}</span>${x.comment?`<span class="s">${esc(x.comment)}</span>`:''}</div>${pill(x.score)}</button>`).join('')+'</div>':'<div class="empty">Ingen registreringer ennå</div>';
+  h+='<div class="btns"><button class="btn sec" data-a="exedit">Rediger øvelse</button><button class="btn sec" data-a="exdel" style="color:var(--red)">Slett øvelse</button></div>';
   return h;
 }
 
 /* ----- spillere ----- */
 function series(p,c){return p.assessments.slice().sort((a,b)=>a.date.localeCompare(b.date)).filter(a=>a.scores[c]!=null).map(a=>a.scores[c])}
-function playerAvg(p){const v=crit().map(c=>series(p,c.n).pop()).filter(x=>x!=null);return avg(v)}
+function playerAvg(p){const v=critFor(p).map(c=>series(p,c.n).pop()).filter(x=>x!=null);return avg(v)}
 
 const TAGS={pos:['Positiv','👍'],neu:['Notat','📝'],warn:['Bekymring','⚠️']};
 const daysAgo=n=>{const d=new Date();d.setDate(d.getDate()-n);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
 const recentLog=(p,n)=>(p.log||[]).filter(l=>l.date>=daysAgo(n||30));
 const logSort=(a,b)=>b.date.localeCompare(a.date)||(b.ts||0)-(a.ts||0);
 function attStats(p){
-  const m=db.attendance.filter(a=>a.sport===p.sport&&a.marks[p.id]).sort((a,b)=>a.date.localeCompare(b.date)).map(a=>a.marks[p.id]);
+  const m=db.attendance.filter(a=>a.sport===p.sport&&a.marks[p.id]).sort((a,b)=>a.date.localeCompare(b.date)).map(a=>a.marks[p.id]).filter(x=>x!=='i'); // 'i' = skadet: teller ikke mot oppmøtet
   const att=m.filter(x=>x!=='a').length;
   return {n:m.length,late:m.filter(x=>x==='l').length,abs:m.filter(x=>x==='a').length,pct:m.length?Math.round(att/m.length*100):null,marks:m};
 }
@@ -384,6 +465,16 @@ function flags(p){
   if(s.n>=3&&s.pct<70)f.push('oppmøte '+s.pct+' %');
   if(s.late>=3)f.push(s.late+' ganger for sent');
   return f;
+}
+function setInjury(p,on,note){
+  const L=(tag,text)=>(p.log=p.log||[]).push({id:uid(),date:today(),ts:Date.now(),tag,text});
+  if(on&&!p.inj){p.inj={since:today(),note:note||''};L('warn','Skadet'+(note?': '+note:''))}
+  else if(on&&p.inj)p.inj.note=note||'';
+  else if(!on&&p.inj){delete p.inj;L('pos','Tilbake etter skade')}
+}
+function injBlock(p){
+  if(!p.inj)return '';
+  return '<div class="card" style="margin:10px 0 0"><div class="t">🩹 Skadet siden '+fd(p.inj.since)+'</div>'+(p.inj.note?'<div class="sub">'+esc(p.inj.note)+'</div>':'')+'<button class="btn sec" data-a="heal" style="margin:10px 0 0">Marker som frisk</button></div>';
 }
 function logRow(l,p,withName){return `<button class="row note" data-a="ledit" data-p="${p.id}" data-id="${l.id}"><span class="tag">${TAGS[l.tag][1]}</span><div class="main"><span class="t">${esc(l.text)}</span><span class="s">${withName?esc(p.name)+' · ':''}${fd(l.date)}</span></div></button>`}
 function plList(){
@@ -397,15 +488,21 @@ function plPlayers(){
   let h=hero('Lagsnitt',pa.length?n1(avg(pa)):'–',[chip(all.length,'spillere'),chip(all.reduce((s,p)=>s+recentLog(p,30).length,0),'logginger 30 d'),chip(all.reduce((s,p)=>s+p.assessments.length,0),'vurderinger')]);
   const fl=all.map(p=>({p,f:flags(p)})).filter(x=>x.f.length);
   if(fl.length)h+='<h2>Å følge opp</h2><div class="grp">'+fl.map(x=>`<button class="row" data-a="open" data-id="${x.p.id}"><span class="tag">⚠️</span><div class="main"><span class="t">${esc(x.p.name)}</span><span class="s">${x.f.map(esc).join(' · ')}</span></div><span class="chev">›</span></button>`).join('')+'</div>';
+  h+=attQuick();
   h+=`<input class="search" data-q="pl" placeholder="Søk i spillere og logg" value="${esc(Q.pl)}">`;
   h+=list.length?'<div class="grp" style="margin-top:12px">'+list.map(p=>{
     const s=attStats(p),w=recentLog(p,30).filter(x=>x.tag==='warn').length;
-    const parts=[s.n?s.pct+' % oppmøte':'',w?'⚠️ '+w:'',recentLog(p,30).length?recentLog(p,30).length+' logg':''].filter(Boolean);
+    const parts=[p.inj?'🩹 Skadet':'',s.n?s.pct+' % oppmøte':'',w?'⚠️ '+w:'',recentLog(p,30).length?recentLog(p,30).length+' logg':''].filter(Boolean);
     return `<div class="row"><button class="main" style="display:flex;gap:12px;align-items:center;text-align:left" data-a="open" data-id="${p.id}">${av(p.name)}<span class="main"><span class="t">${esc(p.name)}</span><span class="s">${parts.join(' · ')||'Ingen registreringer'}</span></span></button>${pill(playerAvg(p))}<button class="lnk" style="font-size:20px;padding:6px" data-a="qlog" data-id="${p.id}" title="Hurtignotat">✎</button></div>`}).join('')+'</div>':'<div class="empty">Ingen spillere på '+SPORTS[db.sport].toLowerCase()+'laget ennå</div>';
   h+='<button class="btn" data-a="pnew">Ny spiller</button>';
   const feed=all.flatMap(p=>(p.log||[]).map(l=>({l,p}))).sort((a,b)=>logSort(a.l,b.l)).slice(0,8);
   if(feed.length)h+='<h2>Siste logg</h2><div class="grp">'+feed.map(x=>logRow(x.l,x.p,true)).join('')+'</div>';
   return h;
+}
+function attQuick(){
+  const t=today(),a=db.attendance.find(x=>x.sport===db.sport&&x.date===t),pl=db.plans.find(x=>x.sport===db.sport&&x.date===t);
+  const n=a?Object.keys(a.marks).length:0,tot=sportPl().length;
+  return '<button class="btn" data-a="attnew" style="margin:12px 0 0">'+(a?'Fortsett oppmøte i dag ('+n+' av '+tot+')':'✓ Oppmøte i dag')+'</button>'+(!a&&pl?'<div class="sub" style="text-align:center;margin-top:6px">Dagens plan: '+esc(pl.title)+'</div>':'');
 }
 function attList(){
   const l=db.attendance.filter(a=>a.sport===db.sport).sort((a,b)=>b.date.localeCompare(a.date));
@@ -422,8 +519,8 @@ function attDetail(){
   const ps=db.players.filter(p=>p.sport===a.sport).sort((x,y)=>x.name.localeCompare(y.name,'nb')),v=Object.values(a.marks),c=k=>v.filter(x=>x===k).length;
   let h=back('<button class="lnk" data-a="attedit">Rediger</button>')+`<h1>${esc(a.title||'Trening')}</h1><div class="sub">${fd(a.date)} · ${SPORTS[a.sport]}</div>`;
   h+=`<div class="stats"><div class="stat"><b>${c('p')}</b><span>Til stede</span></div><div class="stat"><b>${c('l')}</b><span>For sent</span></div><div class="stat"><b>${c('a')}</b><span>Borte</span></div><div class="stat"><b>${ps.length-v.length}</b><span>Uregistrert</span></div></div>`;
-  h+='<button class="btn sec" data-a="attall" style="margin:0 0 4px">Marker uregistrerte som til stede</button><h2>Spillere</h2><div class="grp">'+ps.map(p=>{const m=a.marks[p.id];return `<div class="row">${av(p.name)}<span class="main t">${esc(p.name)}</span><span class="mk">${[['p','✓'],['l','⏱'],['a','✕']].map(([k,t])=>`<button class="${m===k?'on '+k:''}" data-a="mark" data-p="${p.id}" data-id="${k}">${t}</button>`).join('')}</span></div>`}).join('')+'</div>';
-  return h+'<p class="sub" style="margin:10px 16px">✓ til stede · ⏱ kom for sent · ✕ borte. Trykk igjen for å fjerne.</p>';
+  h+='<button class="btn sec" data-a="attall" style="margin:0 0 4px">Alle uregistrerte til stede (skadde markeres skadet)</button><h2>Spillere</h2><div class="grp">'+ps.map(p=>{const m=a.marks[p.id];return `<div class="row">${av(p.name)}<span class="main t">${esc(p.name)}</span><span class="mk">${[['p','✓'],['l','⏱'],['a','✕'],['i','🩹']].map(([k,t])=>`<button class="${m===k?'on '+k:''}" data-a="mark" data-p="${p.id}" data-id="${k}">${t}</button>`).join('')}</span></div>`}).join('')+'</div>';
+  return h+'<p class="sub" style="margin:10px 16px">✓ til stede · ⏱ kom for sent · ✕ borte · 🩹 skadet (teller ikke mot oppmøtet). Trykk igjen for å fjerne.</p>';
 }
 function logBlock(p){
   const l=(p.log||[]).slice().sort(logSort),r=recentLog(p,30),c=t=>r.filter(x=>x.tag===t).length,tag=Q.tag||'neu';
@@ -435,22 +532,23 @@ function logBlock(p){
 }
 function attBlock(p){
   const s=attStats(p);if(!s.n)return '';
-  const cl={p:'pos',l:'warn',a:'abs'};
+  const cl={p:'pos',l:'warn',a:'abs',i:'neu'};
   return `<h2>Oppmøte</h2><div class="stats" style="margin-top:0"><div class="stat"><b>${s.pct} %</b><span>Oppmøte</span></div><div class="stat"><b>${s.late}</b><span>For sent</span></div><div class="stat"><b>${s.abs}</b><span>Borte</span></div></div><div class="dots" style="margin:0 4px 4px">${s.marks.slice(-14).map(m=>`<span class="dot ${cl[m]}"></span>`).join('')}<span class="sub" style="margin-left:6px;font-size:13px">siste økter</span></div>`;
 }
 function matchBlock(p){
   const ms=db.matches.filter(m=>(m.roster||[]).includes(p.id)).sort((a,b)=>b.date.localeCompare(a.date));
   if(!ms.length)return '';
   const ef=ms.map(m=>(m.players[p.id]||{}).effort).filter(x=>x>0);
-  return '<h2>Kamper'+(ef.length?' · snitt innsats '+n1(avg(ef)):'')+'</h2><div class="grp">'+ms.map(m=>{const d=m.players[p.id]||{},o=outcome(m);return `<button class="row note" data-a="openmatch" data-id="match:${m.id}"><div class="main"><span class="t">Mot ${esc(m.opponent||'?')}${o?' · '+m.us+'–'+m.them:''}</span><span class="s">${fd(m.date)}</span>${d.good?`<span class="s">👍 ${esc(d.good)}</span>`:''}${d.work?`<span class="s">🔧 ${esc(d.work)}</span>`:''}</div>${pill(d.effort||null)}</button>`}).join('')+'</div>';
+  const st=ms.filter(m=>/^Startet/.test(lineupTxt(m,p.id))).length;
+  return '<h2>Kamper'+(ef.length?' · snitt innsats '+n1(avg(ef)):'')+(st?' · startet '+st+' av '+ms.length:'')+'</h2><div class="grp">'+ms.map(m=>{const d=m.players[p.id]||{},o=outcome(m);return `<button class="row note" data-a="openmatch" data-id="match:${m.id}"><div class="main"><span class="t">Mot ${esc(m.opponent||'?')}${o?' · '+m.us+'–'+m.them:''}</span><span class="s">${fd(m.date)}${lineupTxt(m,p.id)?' · '+lineupTxt(m,p.id):''}</span>${d.good?`<span class="s">👍 ${esc(d.good)}</span>`:''}${d.work?`<span class="s">🔧 ${esc(d.work)}</span>`:''}</div>${pill(d.effort||null)}</button>`}).join('')+'</div>';
 }
 function plDetail(){
   const p=byId(db.players,R.id);if(!p){R.id=null;return plList()}
   const as=p.assessments.slice().sort((a,b)=>b.date.localeCompare(a.date));
-  let h=back('<button class="lnk" data-a="pedit">Rediger</button>')+`<div style="display:flex;gap:14px;align-items:center;margin:10px 0">${av(p.name,true)}<div><h1 style="margin:0">${esc(p.name)}</h1><div class="sub">${SPORTS[p.sport]}${as.length?' · vurdert '+fd(as[0].date):''}</div></div>${playerAvg(p)!=null?`<div class="ringrow">${ring(playerAvg(p),64)}</div>`:''}</div>`;
-  h+='<button class="btn" data-a="assess">Ny vurdering</button>';
-  const cr=db.criteria[p.sport];
-  h+=logBlock(p)+attBlock(p)+matchBlock(p);
+  let h=back('<button class="lnk" data-a="pedit">Rediger</button>')+`<div style="display:flex;gap:14px;align-items:center;margin:10px 0">${av(p.name,true)}<div><h1 style="margin:0">${esc(p.name)}</h1><div class="sub">${SPORTS[p.sport]}${p.both||p.gk?' · '+(p.both?'Utespiller og keeper':'Keeper'):''}${p.pos?' · '+esc(p.pos):''}${as.length?' · vurdert '+fd(as[0].date):''}</div></div>${playerAvg(p)!=null?`<div class="ringrow">${ring(playerAvg(p),64)}</div>`:''}</div>`;
+  h+='<button class="btn" data-a="assess">Ny vurdering</button>'+injBlock(p);
+  const cr=critFor(p);
+  h+=posBlock(p)+logBlock(p)+attBlock(p)+kampStat(p)+matchBlock(p);
   h+=radar(cr.map(c=>({n:c.n,v:series(p,c.n).pop()})).filter(x=>x.v!=null));
   GROUPS.forEach(g=>{
     const cs=cr.filter(c=>c.g===g);if(!cs.length)return;
@@ -462,6 +560,10 @@ function plDetail(){
   h+=noteSection(p,'train','Må trenes på','Mine observasjoner');
   if(as.length)h+='<h2>Vurderingshistorikk</h2><div class="grp">'+as.map(a=>{const v=Object.values(a.scores);return `<button class="row" data-a="asedit" data-id="${a.id}"><div class="main"><span class="t">${fd(a.date)}</span><span class="s">${v.length} kriterier vurdert</span></div>${pill(avg(v))}<span class="chev">›</span></button>`}).join('')+'</div>';
   return h;
+}
+function posBlock(p){
+  if(!p.pos&&!p.wishPos&&!p.gk&&!p.both)return '';
+  return '<h2>Rolle på banen</h2><div class="grp">'+[['Rolle',roleTxt(p)],['Posisjon',p.pos],['Ønsker å spille',p.wishPos]].filter(x=>x[1]).map(x=>'<div class="row"><span class="main t">'+x[0]+'</span><span class="sub">'+esc(x[1])+'</span></div>').join('')+'</div>';
 }
 function noteSection(p,type,title,hint){
   const ns=p.notes.filter(n=>n.type===type).sort((a,b)=>(a.done-b.done)||b.date.localeCompare(a.date));
@@ -491,7 +593,7 @@ function planDetail(){
     const e=it.exId&&byId(db.exercises,it.exId),s=e&&exStats(e).avg;
     return `<div class="row"><button class="main" style="text-align:left" data-a="itedit" data-id="${it.id}"><span class="t">${i+1}. ${esc(planName(it))}</span><span class="s">${[it.min?it.min+' min':'',e?e.cat:'',it.note].filter(Boolean).map(esc).join(' · ')}</span></button>${s!=null?pill(s):''}<span style="display:flex;flex-direction:column"><button class="lnk" style="padding:0 6px;font-size:14px" data-a="itup" data-id="${it.id}">▲</button><button class="lnk" style="padding:0 6px;font-size:14px" data-a="itdn" data-id="${it.id}">▼</button></span></div>`}).join(''):'<div class="row"><span class="sub">Ingen poster ennå</span></div>')+'</div>';
   h+='<div class="btns"><button class="btn sec" data-a="itbank">Fra øvelsesbank</button><button class="btn sec" data-a="itnew">Egen post</button></div>';
-  if(p.items.some(i=>i.exId))h+=`<button class="btn" data-a="planlog">${p.done?'Rediger resultat':'Logg resultat etter økt'}</button>`;
+  if(p.items.length)h+=`<button class="btn" data-a="planlog">${p.done?'Rediger resultat':'Logg resultat etter økt'}</button>`;
   h+='<button class="btn sec" data-a="plandup">Kopier som ny plan</button>';
   return h;
 }
@@ -521,14 +623,95 @@ function mblock(action,rows){
   const any=rows.some(r=>r[1]);
   return '<button class="grp" style="display:block;width:100%;text-align:left" data-a="'+action+'">'+(any?rows.filter(r=>r[1]).map(r=>'<div class="rowc"><span class="sub">'+r[0]+'</span><div style="white-space:pre-wrap">'+esc(r[1])+'</div></div>').join(''):'<div class="rowc"><span class="sub">Trykk for å skrive</span></div>')+'</button>';
 }
+/* ----- laguppstilling / formasjon ----- */
+const LBL={d:{1:['SB'],2:['SB','SB'],3:['SB','SB','SB'],4:['VB','SB','SB','HB'],5:['VB','SB','SB','SB','HB']},m:{1:['M'],2:['M','M'],3:['VM','M','HM'],4:['VM','M','M','HM'],5:['VM','M','M','M','HM']},a:{1:['S'],2:['S','S'],3:['VK','S','HK']}};
+function frows(k){
+  const rows=k.split('-').map(Number),r=rows.length,sl=[[50,126,'K']];
+  rows.forEach((n,i)=>{const y=r===1?70:104-i*(74/(r-1)),kind=i===0?'d':i===r-1?'a':'m',lb=LBL[kind][n]||[];for(let j=0;j<n;j++)sl.push([+((j+1)*100/(n+1)).toFixed(1),+y.toFixed(1),lb[j]||''])});
+  return sl;
+}
+const FFB=[['4-3-3','11-er'],['4-4-2','11-er'],['4-2-3-1','11-er'],['3-5-2','11-er'],['3-4-3','11-er'],['5-3-2','11-er'],['3-3-2','9-er'],['3-2-3','9-er'],['2-3-1','7-er'],['3-2-1','7-er'],['2-2-2','7-er'],['1-2-1','5-er']];
+const FHB={
+  '6-0':{n:'Forsvar 6-0',s:[[50,86,'K'],[10,82,'VK'],[26,70,'VY'],[41,62,'VI'],[59,62,'HI'],[74,70,'HY'],[90,82,'HK']]},
+  '5-1':{n:'Forsvar 5-1',s:[[50,86,'K'],[10,82,'VK'],[27,70,'VI'],[50,62,'M'],[73,70,'HI'],[90,82,'HK'],[50,44,'Fremst']]},
+  '3-2-1':{n:'Forsvar 3-2-1',s:[[50,86,'K'],[26,72,'V'],[50,64,'M'],[74,72,'H'],[34,52,'VF'],[66,52,'HF'],[50,40,'Fremst']]},
+  '4-2':{n:'Forsvar 4-2',s:[[50,86,'K'],[10,82,'VK'],[34,66,'VI'],[66,66,'HI'],[90,82,'HK'],[32,48,'VF'],[68,48,'HF']]},
+  'ang':{n:'Angrep 3-3',top:1,s:[[50,86,'K'],[10,14,'VK'],[90,14,'HK'],[50,33,'Strek'],[22,52,'VB'],[50,57,'MB'],[78,52,'HB']]}
+};
+function fslots(m){const k=LU(m).sys;return m.sport==='football'?frows(k):(FHB[k]||FHB['6-0']).s}
+function fname(m,k){return m.sport==='football'?k+' ('+(FFB.find(x=>x[0]===k)||['',''])[1]+')':(FHB[k]||FHB['6-0']).n}
+function LU(m){if(!m.lineup)m.lineup={sys:m.sport==='football'?'4-3-3':'6-0',slots:{},bench:[]};if(!m.lineup.bench)m.lineup.bench=[];if(!m.lineup.slots)m.lineup.slots={};return m.lineup}
+function slotOf(lu,id){return Object.keys(lu.slots).find(k=>lu.slots[k]===id)}
+function lineupTxt(m,id){
+  if(!m.lineup)return '';const lu=m.lineup,k=slotOf(lu,id);
+  if(k!=null){const l=((m.sport==='football'?frows(lu.sys):(FHB[lu.sys]||FHB['6-0']).s)[+k]||[])[2];return 'Startet'+(l?' · '+(l==='K'?'Keeper':l):'')}
+  return lu.bench.includes(id)?'Benk':'';
+}
+function addRoster(m,id){m.roster=m.roster||[];if(!m.roster.includes(id))m.roster.push(id);m.players[id]=m.players[id]||{effort:0,good:'',work:''}}
+function setSlot(m,i,pid){
+  const lu=LU(m),prev=lu.slots[i];
+  if(pid){
+    const from=slotOf(lu,pid);lu.bench=lu.bench.filter(x=>x!==pid);
+    if(from!=null){if(prev)lu.slots[from]=prev;else delete lu.slots[from]}else if(prev)lu.bench.push(prev);
+    lu.slots[i]=pid;addRoster(m,pid);if(prev)addRoster(m,prev);
+  }else if(prev){lu.bench.push(prev);delete lu.slots[i]}
+}
+function tok(sl,i,pid,fb){
+  const x=sl[0],y=sl[1],l=sl[2]||'',p=pid&&byId(db.players,pid);
+  const tx='font-family="-apple-system,system-ui,sans-serif" text-anchor="middle" paint-order="stroke" stroke="rgba(0,0,0,.55)" stroke-linejoin="round"';
+  if(!p)return '<g data-a="slot" data-id="'+i+'" style="cursor:pointer"><circle cx="'+x+'" cy="'+y+'" r="5.6" fill="rgba(255,255,255,.16)" stroke="#fff" stroke-width=".7" stroke-dasharray="2 1.6"/><text x="'+x+'" y="'+(y+1.9)+'" font-size="5.5" fill="#fff" '+tx+' stroke-width="0">+</text><text x="'+x+'" y="'+(y+10.5)+'" font-size="3.3" fill="#fff" '+tx+' stroke-width=".7">'+esc(l==='K'?'Keeper':l)+'</text></g>';
+  const ini=p.name.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase(),nm=p.name.split(/\s+/)[0].slice(0,9);
+  return '<g data-a="slot" data-id="'+i+'" style="cursor:pointer"><circle cx="'+x+'" cy="'+y+'" r="5.8" fill="'+(i===0?'#f5b301':'hsl('+hue(p.name)+' 55% 52%)')+'" stroke="#fff" stroke-width="1"/><text x="'+x+'" y="'+(y+1.7)+'" font-size="4.6" font-weight="700" fill="'+(i===0?'#1d1d1f':'#fff')+'" '+tx+' stroke-width="0">'+esc(ini)+'</text><text x="'+x+'" y="'+(y+10.5)+'" font-size="3.5" font-weight="600" fill="#fff" '+tx+' stroke-width=".8">'+esc(nm)+'</text>'+(p.inj?'<text x="'+(x+4.6)+'" y="'+(y-3.6)+'" font-size="4.4" text-anchor="middle">🩹</text>':'')+'</g>';
+}
+function pitchSvg(m){
+  const lu=LU(m),S=fslots(m),fb=m.sport==='football',top=!fb&&(FHB[lu.sys]||{}).top;
+  let g;
+  if(fb){
+    g='<rect width="100" height="140" fill="#2f9d57"/>';
+    for(let i=0;i<7;i+=2)g+='<rect x="0" y="'+(i*20)+'" width="100" height="20" fill="rgba(255,255,255,.05)"/>';
+    const L='fill="none" stroke="rgba(255,255,255,.75)" stroke-width=".7"';
+    g+='<rect x="3" y="3" width="94" height="134" '+L+'/><line x1="3" y1="70" x2="97" y2="70" '+L+'/><circle cx="50" cy="70" r="11" '+L+'/><rect x="24" y="3" width="52" height="21" '+L+'/><rect x="38" y="3" width="24" height="8" '+L+'/><rect x="24" y="116" width="52" height="21" '+L+'/><rect x="38" y="129" width="24" height="8" '+L+'/><rect x="43" y="0" width="14" height="3" '+L+'/><rect x="43" y="137" width="14" height="3" '+L+'/>';
+  }else{
+    const L='fill="none" stroke="rgba(255,255,255,.85)" stroke-width=".8"';
+    g='<g'+(top?' transform="rotate(180 50 50)"':'')+'><rect width="100" height="100" fill="#2d5fc9"/><rect x="2" y="2" width="96" height="96" '+L+'/><path d="M20,98 A30,30 0 0 1 80,98 Z" fill="rgba(255,179,71,.85)" stroke="#fff" stroke-width=".8"/><path d="M5,98 A45,45 0 0 1 95,98" '+L+' stroke-dasharray="3 2"/><line x1="46" y1="63" x2="54" y2="63" '+L+'/><line x1="47" y1="78" x2="53" y2="78" '+L+'/><rect x="44" y="98" width="12" height="2" fill="#fff"/></g>';
+  }
+  g+=S.map((sl,i)=>tok(sl,i,lu.slots[i],fb)).join('');
+  return '<svg viewBox="0 0 100 '+(fb?140:100)+'" role="img" aria-label="Laguppstilling" style="width:100%;max-width:520px;height:auto;display:block;margin:0 auto;border-radius:16px;touch-action:manipulation">'+g+'</svg>';
+}
+function lineupBlock(m){
+  const lu=LU(m),S=fslots(m),placed=Object.keys(lu.slots).length;
+  let h='<h2>Laguppstilling</h2><div class="grp"><button class="row" data-a="lsys"><div class="main"><span class="t">Formasjon</span></div><span class="sub">'+esc(fname(m,lu.sys))+'</span><span class="chev">›</span></button></div>';
+  h+='<div class="card" style="padding:8px;margin-top:10px">'+pitchSvg(m)+'<div class="sub" style="text-align:center;margin:8px 0 2px">'+placed+' av '+S.length+' plasser fylt · trykk på en plass for å velge spiller</div></div>';
+  h+='<h2>Benk'+(lu.bench.length?' · '+lu.bench.length:'')+'</h2><div class="grp">'+lu.bench.map(id=>{const p=byId(db.players,id);return p?'<div class="row">'+av(p.name)+'<div class="main"><span class="t">'+esc(p.name)+'</span>'+(p.pos?'<span class="s">'+esc(p.pos)+'</span>':'')+'</div></div>':''}).join('')+'<button class="row" data-a="lbench"><span class="lnk">＋ Velg benk</span></button></div>';
+  return h;
+}
+const MSTAT={football:[['goals','⚽','Mål'],['assists','🅰️','Målgivende'],['saves','🧤','Redninger'],['yellow','🟨','Gult kort'],['red','🟥','Rødt kort']],handball:[['goals','🤾','Mål'],['assists','🅰️','Målgivende'],['saves','🧤','Redninger'],['min2','2 min','2 minutter'],['yellow','🟨','Gult kort'],['red','🟥','Rødt kort']]};
+function statBlock(m){
+  const ro=(m.roster||[]).map(id=>byId(db.players,id)).filter(Boolean);
+  if(!ro.length)return '';
+  const keys=MSTAT[m.sport]||MSTAT.football,dec=Q.statdec;
+  const tot=k=>ro.reduce((s,p)=>s+((m.players[p.id]||{})[k]||0),0);
+  let h='<h2>Kampstatistikk</h2><div class="seg"><button class="'+(dec?'':'on')+'" data-a="statmode" data-id="">＋ Legg til</button><button class="'+(dec?'on':'')+'" data-a="statmode" data-id="1">− Fjern</button></div><div class="grp">';
+  h+=ro.map(p=>{const x=m.players[p.id]||{};return '<div><div class="row" style="padding-bottom:4px">'+av(p.name)+'<span class="main t">'+esc(p.name)+'</span></div><div class="sb'+(dec?' dec':'')+'">'+keys.filter(k=>k[0]!=='saves'||isKeeperish(p)).map(k=>'<button class="'+(x[k[0]]?'has':'')+'" data-a="stat" data-p="'+p.id+'" data-id="'+k[0]+'" title="'+k[2]+'">'+k[1]+' '+(x[k[0]]||0)+'</button>').join('')+'</div></div>'}).join('')+'</div>';
+  h+='<p class="sub" style="margin:6px 16px">Totalt: '+keys.filter(k=>tot(k[0])).map(k=>k[1]+' '+tot(k[0])).join(' · ')+(keys.some(k=>tot(k[0]))?'':'ingen registrert ennå')+'. Trykk på en knapp for å registrere.</p>';
+  return h;
+}
+function kampStat(p){
+  const keys=MSTAT[p.sport]||MSTAT.football,sum=k=>db.matches.reduce((s,m)=>s+(((m.players||{})[p.id]||{})[k]||0),0);
+  const v=keys.map(k=>[k,sum(k[0])]).filter(x=>x[1]>0);
+  if(!v.length)return '';
+  return '<h2>Kampstatistikk</h2><div class="stats" style="margin-top:0;flex-wrap:wrap">'+v.map(([k,n])=>'<div class="stat"><b>'+n+'</b><span>'+k[1]+' '+k[2]+'</span></div>').join('')+'</div>';
+}
 function matchDetail(){
   const m=byId(db.matches,String(R.id).slice(6));if(!m){R.id=null;return compList()}
   const o=outcome(m),t=m.team||{},op=m.opp||{},roster=m.roster||[],ef=matchEffort(m);
   let h=back('<button class="lnk" data-a="matchedit">Rediger</button>')+'<h1>Mot '+esc(m.opponent||'?')+'</h1><div class="sub">'+fd(m.date)+' · '+esc(m.venue||'')+(m.comp?' · '+esc(m.comp):'')+'</div>';
   h+=hero(o?OUT[o][0]:'Resultat',o?m.us+' – '+m.them:'–',[chip(t.rating||'–','lagets spill'),chip(ef==null?'–':n1(ef),'snitt innsats'),chip(roster.length,'spillere')]);
+  h+=lineupBlock(m);
   h+='<h2>Lagets spill</h2>'+(t.rating?'<div class="stats" style="margin:0 0 8px"><div class="stat"><b>'+t.rating+' / 10</b><span>Helhetsinntrykk</span></div></div>':'')+mblock('teamedit',[['Hvordan vi spilte',t.how],['Bra',t.good],['Å jobbe med',t.work]]);
   h+='<h2>Motstanderlaget</h2>'+mblock('oppedit',[['Spillestil',op.style],['Styrker',op.strong],['Svakheter',op.weak]]);
-  h+='<h2>Spillere</h2><div class="grp">'+roster.map(id=>{const p=byId(db.players,id);if(!p)return '';const d=m.players[id]||{};return `<button class="row note" data-a="mpedit" data-id="${id}">${av(p.name)}<div class="main"><span class="t">${esc(p.name)}</span>${d.good?`<span class="s">👍 ${esc(d.good)}</span>`:''}${d.work?`<span class="s">🔧 ${esc(d.work)}</span>`:''}${!d.good&&!d.work?'<span class="s">Trykk for å vurdere</span>':''}</div>${pill(d.effort||null)}</button>`}).join('')+'<button class="row" data-a="mroster"><span class="lnk">＋ Velg spillere som var med</span></button></div>';
+  h+=statBlock(m);
+  h+='<h2>Spillere</h2><div class="grp">'+roster.map(id=>{const p=byId(db.players,id);if(!p)return '';const d=m.players[id]||{};return `<button class="row note" data-a="mpedit" data-id="${id}">${av(p.name)}<div class="main"><span class="t">${esc(p.name)}</span>${lineupTxt(m,id)?'<span class="s">'+lineupTxt(m,id)+'</span>':''}${d.good?`<span class="s">👍 ${esc(d.good)}</span>`:''}${d.work?`<span class="s">🔧 ${esc(d.work)}</span>`:''}${!d.good&&!d.work?'<span class="s">Trykk for å vurdere</span>':''}</div>${pill(d.effort||null)}</button>`}).join('')+'<button class="row" data-a="mroster"><span class="lnk">＋ Velg spillere som var med</span></button></div>';
   return h+'<p class="sub" style="margin:10px 16px">Tallet til høyre er innsats (1–10).</p>';
 }
 function compMain(){
@@ -553,9 +736,10 @@ function more(){
   let h=back()+title('Innstillinger')+segment()+`<h2>Vurderingskriterier – ${SPORTS[db.sport]}</h2>`;
   GROUPS.forEach(g=>{
     const cs=crit().filter(c=>c.g===g);
-    h+=`<div class="sub" style="margin:12px 16px 4px">${esc(g)}</div><div class="grp">`+(cs.length?cs.map(c=>`<button class="row" data-a="cedit" data-id="${esc(c.n)}"><span class="main t">${esc(c.n)}</span><span class="chev">›</span></button>`).join(''):'<div class="row"><span class="sub">Ingen</span></div>')+'</div>';
+    h+=`<div class="sub" style="margin:12px 16px 4px">${esc(g)}</div><div class="grp">`+(cs.length?cs.map(c=>`<button class="row" data-a="cedit" data-id="${esc(c.n)}"><span class="main t">${esc(c.n)}</span>${c.o?'<span class="sub">utespillere</span>':''}<span class="chev">›</span></button>`).join(''):'<div class="row"><span class="sub">Ingen</span></div>')+'</div>';
   });
   h+='<button class="btn sec" data-a="cnew">Nytt kriterium</button>';
+  h+=uiBlock();
   h+='<h2>Data</h2><div class="grp"><button class="row" data-a="export"><span class="main t" style="color:var(--blue)">Last ned sikkerhetskopi</span></button><label class="row" style="cursor:pointer"><span class="main t" style="color:var(--blue)">Gjenopprett fra sikkerhetskopi</span><input type="file" accept=".json,application/json" data-ch="import" hidden></label><button class="row" data-a="reset"><span class="main t" style="color:var(--red)">Slett alle data på denne enheten</span></button></div>';
   h+=`<p class="sub" style="margin:10px 16px">Alt lagres lokalt på denne enheten og sendes ingen steder. Ta sikkerhetskopi jevnlig. Sist endret: ${db.modified?new Date(db.modified).toLocaleString('nb-NO'):'–'}. ${db.players.length} spillere · ${db.exercises.length} øvelser · ${db.plans.length} planer · ${db.comps.length} konkurranser.</p>`;
   const sn=snapInfo();
@@ -615,12 +799,12 @@ const A={
 
   /* øvelser */
   exnew:()=>openForm({title:'Ny øvelse',req:'name',reqLabel:'navn',fields:[{k:'name',label:'Navn',type:'text'},{k:'cat',label:'Kategori',type:'select',options:CATS,value:'Spill'},{k:'desc',label:'Beskrivelse',type:'area',rows:3}],save:v=>{const e={id:uid(),sport:db.sport,name:v.name,cat:v.cat,desc:v.desc,sessions:[]};db.exercises.push(e);R.id=e.id}}),
-  exedit:()=>{const e=byId(db.exercises,R.id);openForm({title:'Rediger øvelse',req:'name',reqLabel:'navn',fields:[{k:'name',label:'Navn',type:'text',value:e.name},{k:'cat',label:'Kategori',type:'select',options:[...new Set(CATS.concat(e.cat))],value:e.cat},{k:'desc',label:'Beskrivelse',type:'area',rows:3,value:e.desc}],save:v=>Object.assign(e,v),del:()=>{db.plans.forEach(p=>p.items.forEach(i=>{if(i.exId===e.id){i.exId=null;i.text=e.name}}));db.exercises=db.exercises.filter(x=>x!==e);R.id=null},delLabel:'Slett øvelse',confirm:'Slette øvelsen og all historikk?'})},
+  exedit:()=>{const e=byId(db.exercises,R.id);openForm({title:'Rediger øvelse',req:'name',reqLabel:'navn',fields:[{k:'name',label:'Navn',type:'text',value:e.name},{k:'cat',label:'Kategori',type:'select',options:[...new Set(CATS.concat(e.cat))],value:e.cat},{k:'desc',label:'Beskrivelse',type:'area',rows:3,value:e.desc}],save:v=>Object.assign(e,v),del:()=>delEx(e),delLabel:'Slett øvelse',confirm:'Slette øvelsen, all historikk og fjerne den fra planer?'})},
   sesnew:()=>sesForm(null),
   sesedit:d=>sesForm(d.id),
   /* spillere */
-  pnew:()=>openForm({title:'Ny spiller',req:'name',reqLabel:'navn',fields:[{k:'name',label:'Navn',type:'text'}],save:v=>{const p={id:uid(),name:v.name,sport:db.sport,assessments:[],notes:[]};db.players.push(p);R.id=p.id}}),
-  pedit:()=>{const p=byId(db.players,R.id);openForm({title:'Rediger spiller',req:'name',reqLabel:'navn',fields:[{k:'name',label:'Navn',type:'text',value:p.name}],save:v=>p.name=v.name,del:()=>{db.comps.forEach(c=>{c.players=c.players.filter(i=>i!==p.id);delete c.points[p.id]});db.attendance.forEach(a=>delete a.marks[p.id]);db.matches.forEach(m=>{m.roster=(m.roster||[]).filter(i=>i!==p.id);delete m.players[p.id]});db.players=db.players.filter(x=>x!==p);R.id=null},delLabel:'Slett spiller',confirm:'Slette spilleren med alle vurderinger og notater?'})},
+  pnew:()=>openForm({title:'Ny spiller',req:'name',reqLabel:'navn',fields:[{k:'name',label:'Navn',type:'text'},{k:'role',label:'Rolle',type:'select',options:['Utespiller','Keeper',BOTH],value:'Utespiller'},{k:'pos',label:'Posisjon på banen',type:'text',ph:'F.eks. back, midt, kant',value:''},{k:'wishPos',label:'Ønsker å spille',type:'text',ph:'Ønsket posisjon',value:''}],save:v=>{const p={id:uid(),name:v.name,sport:db.sport,gk:v.role==='Keeper',both:v.role===BOTH,pos:v.pos||'',wishPos:v.wishPos||'',assessments:[],notes:[],log:[]};db.players.push(p);R.id=p.id}}),
+  pedit:()=>{const p=byId(db.players,R.id);openForm({title:'Rediger spiller',req:'name',reqLabel:'navn',fields:[{k:'name',label:'Navn',type:'text',value:p.name},{k:'role',label:'Rolle',type:'select',options:['Utespiller','Keeper',BOTH],value:roleTxt(p)},{k:'pos',label:'Posisjon på banen',type:'text',ph:'F.eks. back, midt, kant',value:p.pos||''},{k:'wishPos',label:'Ønsker å spille',type:'text',ph:'Ønsket posisjon',value:p.wishPos||''},{k:'status',label:'Status',type:'select',options:['Tilgjengelig','Skadet'],value:p.inj?'Skadet':'Tilgjengelig'},{k:'injnote',label:'Skade / merknad',type:'text',ph:'F.eks. ankel, tilbake om 2 uker',value:p.inj?p.inj.note:''}],save:v=>{p.name=v.name;p.gk=v.role==='Keeper';p.both=v.role===BOTH;p.pos=v.pos||'';p.wishPos=v.wishPos||'';setInjury(p,v.status==='Skadet',v.injnote)},del:()=>{db.comps.forEach(c=>{c.players=c.players.filter(i=>i!==p.id);delete c.points[p.id]});db.attendance.forEach(a=>delete a.marks[p.id]);db.matches.forEach(m=>{m.roster=(m.roster||[]).filter(i=>i!==p.id);delete m.players[p.id];if(m.lineup){Object.keys(m.lineup.slots).forEach(k=>{if(m.lineup.slots[k]===p.id)delete m.lineup.slots[k]});m.lineup.bench=m.lineup.bench.filter(i=>i!==p.id)}});db.players=db.players.filter(x=>x!==p);R.id=null},delLabel:'Slett spiller',confirm:'Slette spilleren med alle vurderinger og notater?'})},
   plsub:d=>{Q.plsub=d.id;render(true)},
   snaprestore:()=>{const r=localStorage.getItem(KEY+'.snap');if(!r)return;if(!confirm('Gjenopprette forrige tilstand? Dagens data legges i stedet i «forrige tilstand», så du kan bytte tilbake.'))return;try{const d=migrate(JSON.parse(r)),cur=JSON.stringify(db);db=d;save();localStorage.setItem(KEY+'.snap',cur);R={tab:'stat',id:'settings'};render();toast('Gjenopprettet')}catch(e){toast('Kunne ikke gjenopprette')}},
   upd:()=>{if(SWREG){SWREG.update().then(()=>toast('Sjekket. Er det en ny versjon, kommer en melding.')).catch(()=>toast('Kunne ikke sjekke (er du på nett?)'))}else toast('Oppdateringer sjekkes bare i den installerte nettversjonen')},
@@ -630,6 +814,51 @@ const A={
   compsub:d=>{Q.compsub=d.id;render(true)},
   openmatch:d=>{R={tab:'comp',id:d.id};render()},
   matchnew:()=>matchForm(null),
+  stat:d=>{const m=byId(db.matches,String(R.id).slice(6));const x=m.players[d.p]=m.players[d.p]||{effort:0,good:'',work:''};x[d.id]=Math.max(0,(x[d.id]||0)+(Q.statdec?-1:1));save();render(true)},
+  statmode:d=>{Q.statdec=!!d.id;render(true)},
+  heal:()=>{const p=byId(db.players,R.id);setInjury(p,false);save();render(true);toast('Markert som frisk')},
+  exdel:()=>{const e=byId(db.exercises,R.id);if(!e||!confirm('Slette øvelsen, all historikk og fjerne den fra planer?'))return;delEx(e);save();render()},
+  uimode:d=>{UI.mode=d.id;try{localStorage.setItem(UIK,JSON.stringify(UI))}catch(e){}render(true)},
+  locknow:()=>lockNow(),
+  pinset:()=>{
+    const a=prompt('Velg en PIN på 4 siffer');if(a==null)return;if(!/^\d{4}$/.test(a)){toast('PIN må være 4 siffer');return}
+    if(prompt('Skriv PIN en gang til')!==a){toast('PIN-kodene var ikke like');return}
+    const salt=uid();try{localStorage.setItem(PINK,JSON.stringify({len:4,salt,h:pinHash(a,salt)}))}catch(e){toast('Kunne ikke lagre PIN');return}
+    toast('PIN satt');render(true);
+  },
+  pinoff:()=>{const p=pinGet();if(!p)return;const a=prompt('Skriv inn gjeldende PIN for å fjerne den');if(a==null)return;if(pinHash(a,p.salt)!==p.h){toast('Feil PIN');return}try{localStorage.removeItem(PINK)}catch(e){}toast('PIN fjernet');render(true)},
+  pin:d=>{
+    const p=pinGet();if(!p||!LOCKED)return;if(PINBUF.length>=p.len)return;PINBUF+=d.id;
+    if(PINBUF.length===p.len){if(pinHash(PINBUF,p.salt)===p.h){LOCKED=false;PINBUF='';render()}else{PINBUF='';render();toast('Feil PIN')}}else render();
+  },
+  pinback:()=>{PINBUF=PINBUF.slice(0,-1);render()},
+  pinforgot:()=>{
+    if(prompt('Glemt PIN: dette SLETTER alle data på denne enheten (også interne kopier). Du kan gjenopprette fra en sikkerhetskopifil etterpå. Skriv SLETT for å fortsette.')!=='SLETT')return;
+    try{[KEY,KEY+'.snap',KEY+'.corrupt',PINK].forEach(k=>localStorage.removeItem(k))}catch(e){}
+    db=seed();LOCKED=false;PINBUF='';save();R={tab:'ex',id:null};render();toast('Data og PIN slettet');
+  },
+  slot:d=>{
+    const m=byId(db.matches,String(R.id).slice(6)),lu=LU(m),i=+d.id,S=fslots(m),cur=lu.slots[i],lab=S[i][2]==='K'?'Keeper':(S[i][2]||'Plass '+(i+1));
+    let ps=db.players.filter(p=>p.sport===m.sport).sort((a,b)=>(!!a.inj-!!b.inj)||(i===0?(isKeeperish(b)-isKeeperish(a)):0)||a.name.localeCompare(b.name,'nb'));
+    const row=p=>{const k=slotOf(lu,p.id),w=k!=null?'Starter som '+(fslots(m)[+k][2]==='K'?'keeper':fslots(m)[+k][2]||'plass '+(+k+1)):lu.bench.includes(p.id)?'På benken':'';return '<button class="row" data-a="slotset" data-id="'+p.id+'" data-i="'+i+'">'+av(p.name)+'<div class="main"><span class="t">'+esc(p.name)+(p.id===cur?' ✓':'')+'</span><span class="s">'+[p.inj?'🩹 Skadet':'',isKeeperish(p)?roleTxt(p):'',p.pos,w].filter(Boolean).map(esc).join(' · ')+'</span></div></button>'};
+    openSheet('<div class="sh-h"><button class="lnk" data-a="close">Lukk</button><b>'+esc(lab)+'</b><span></span></div><div class="sh-b">'+(cur?'<div class="grp"><button class="row" data-a="slotset" data-id="" data-i="'+i+'"><span class="main t" style="color:var(--red)">Fjern fra plassen (til benk)</span></button></div>':'')+'<h2>Velg spiller</h2><div class="grp">'+(ps.map(row).join('')||'<div class="row"><span class="sub">Ingen spillere ennå</span></div>')+'</div></div>');
+  },
+  slotset:d=>{const m=byId(db.matches,String(R.id).slice(6));setSlot(m,+d.i,d.id||null);closeSheet();save();render(true)},
+  lsys:()=>{
+    const m=byId(db.matches,String(R.id).slice(6)),lu=LU(m);
+    const list=m.sport==='football'?FFB.map(x=>[x[0],x[0]+' · '+x[1]]):Object.keys(FHB).map(k=>[k,FHB[k].n]);
+    openSheet('<div class="sh-h"><button class="lnk" data-a="close">Lukk</button><b>Formasjon</b><span></span></div><div class="sh-b"><div class="grp">'+list.map(x=>'<button class="row" data-a="lsysset" data-id="'+x[0]+'"><span class="main t">'+esc(x[1])+(x[0]===lu.sys?' ✓':'')+'</span></button>').join('')+'</div></div>');
+  },
+  lsysset:d=>{
+    const m=byId(db.matches,String(R.id).slice(6)),lu=LU(m);lu.sys=d.id;
+    const n=fslots(m).length;let moved=0;
+    Object.keys(lu.slots).forEach(k=>{if(+k>=n){lu.bench.push(lu.slots[k]);delete lu.slots[k];moved++}});
+    closeSheet();save();render(true);if(moved)toast(moved+' spiller'+(moved>1?'e':'')+' flyttet til benk (færre plasser)');
+  },
+  lbench:()=>{
+    const m=byId(db.matches,String(R.id).slice(6)),lu=LU(m),pl=Object.values(lu.slots);
+    openPick({title:'Benk',groups:[{h:'Spillere',items:db.players.filter(p=>p.sport===m.sport&&!pl.includes(p.id)).sort((a,b)=>a.name.localeCompare(b.name,'nb')).map(p=>({id:p.id,label:p.name,sub:[p.inj?'🩹 Skadet':'',isKeeperish(p)?roleTxt(p):'',p.pos].filter(Boolean).join(' · '),on:lu.bench.includes(p.id)}))}],ok:ids=>{lu.bench=ids;ids.forEach(id=>addRoster(m,id))}});
+  },
   matchedit:()=>matchForm(String(R.id).slice(6)),
   teamedit:()=>{const m=byId(db.matches,String(R.id).slice(6)),t=m.team||{};openForm({title:'Lagets spill',noFocus:true,fields:[{k:'rating',label:'Helhetsinntrykk (1–10)',type:'range',min:0,value:t.rating||0},{k:'how',label:'Hvordan spilte vi?',type:'area',rows:4,value:t.how,ph:'Tempo, struktur, holdning, stemning…'},{k:'good',label:'Hva fungerte bra?',type:'area',rows:3,value:t.good},{k:'work',label:'Hva må vi jobbe med?',type:'area',rows:3,value:t.work}],save:v=>{m.team=v}})},
   oppedit:()=>{const m=byId(db.matches,String(R.id).slice(6)),o=m.opp||{};openForm({title:'Motstanderlaget',fields:[{k:'style',label:'Spillestil',type:'area',rows:3,value:o.style,ph:'Hvordan spiller de?'},{k:'strong',label:'Styrker',type:'area',rows:3,value:o.strong},{k:'weak',label:'Svakheter',type:'area',rows:3,value:o.weak}],save:v=>{m.opp=v}})},
@@ -640,10 +869,14 @@ const A={
   logall:()=>{Q.logall=!Q.logall;render(true)},
   ledit:d=>logForm(d.p,d.id),
   qlog:d=>logForm(d.id,null),
-  attnew:()=>openForm({title:'Registrer oppmøte',fields:[{k:'title',label:'Økt',type:'text',ph:'F.eks. Mandagstrening'},{k:'date',label:'Dato',type:'date',value:today()}],save:v=>{const a={id:uid(),sport:db.sport,title:v.title,date:v.date||today(),marks:{}};db.attendance.push(a);R.id='att:'+a.id}}),
+  attnew:()=>{
+    const t=today();let a=db.attendance.find(x=>x.sport===db.sport&&x.date===t);
+    if(!a){const pl=db.plans.find(x=>x.sport===db.sport&&x.date===t);a={id:uid(),sport:db.sport,title:pl?pl.title:'Trening',date:t,marks:{},planId:pl?pl.id:null};sportPl().forEach(p=>{if(p.inj)a.marks[p.id]='i'});db.attendance.push(a)}
+    R={tab:'pl',id:'att:'+a.id};Q.plsub='att';save();render();
+  },
   attedit:()=>{const a=byId(db.attendance,String(R.id).slice(4));openForm({title:'Rediger økt',fields:[{k:'title',label:'Økt',type:'text',value:a.title},{k:'date',label:'Dato',type:'date',value:a.date}],save:v=>{a.title=v.title;a.date=v.date||a.date},del:()=>{db.attendance=db.attendance.filter(x=>x!==a);R.id=null},delLabel:'Slett registrering',confirm:'Slette oppmøteregistreringen?'})},
   mark:d=>{const a=byId(db.attendance,String(R.id).slice(4));if(a.marks[d.p]===d.id)delete a.marks[d.p];else a.marks[d.p]=d.id;save();render(true)},
-  attall:()=>{const a=byId(db.attendance,String(R.id).slice(4));db.players.filter(p=>p.sport===a.sport).forEach(p=>{if(!a.marks[p.id])a.marks[p.id]='p'});save();render(true)},
+  attall:()=>{const a=byId(db.attendance,String(R.id).slice(4));db.players.filter(p=>p.sport===a.sport).forEach(p=>{if(!a.marks[p.id])a.marks[p.id]=p.inj?'i':'p'});save();render(true)},
   assess:()=>asForm(null),
   asedit:d=>asForm(d.id),
   nnew:d=>noteForm(d.id,null),
@@ -662,7 +895,7 @@ const A={
     openPick({title:'Velg øvelser',okLabel:'Legg til',groups:cats.map(c=>({h:c,items:ex.filter(e=>e.cat===c).map(e=>{const s=exStats(e).avg;return {id:e.id,label:e.name,sub:s==null?'Ikke prøvd':'Snitt '+n1(s)}})})).filter(g=>g.items.length),ok:ids=>ids.forEach(id=>p.items.push({id:uid(),exId:id,min:null,note:''}))});
   },
   planlog:()=>{
-    const p=byId(db.plans,R.id),its=p.items.filter(i=>i.exId&&byId(db.exercises,i.exId));
+    const p=byId(db.plans,R.id);p.items.forEach(i=>{if(!(i.exId&&byId(db.exercises,i.exId))){i.exId=exIn(db,p.sport,i.text||'Post','Annet').id;delete i.text}});const its=p.items;
     const prev=i=>{const e=byId(db.exercises,i.exId);const s=e.sessions.find(x=>x.planItem===p.id+':'+i.id);return s}
     openForm({title:'Resultat – '+p.title,saveLabel:'Lagre',noFocus:true,fields:[{h:'Score per øvelse (1–10, til venstre = ikke gjennomført)'}].concat(its.map(i=>({k:'s_'+i.id,label:planName(i),type:'range',min:0,value:(prev(i)||{}).score||0})),[{k:'c',label:'Kommentar til økta',type:'area',rows:2,value:p.log||''}]),
       save:v=>{
@@ -703,11 +936,11 @@ function sesForm(id){
     del:s&&(()=>{e.sessions=e.sessions.filter(x=>x!==s)}),delLabel:'Slett registrering',confirm:'Slette registreringen?'});
 }
 function asForm(id){
-  const p=byId(db.players,R.id),a=id?byId(p.assessments,id):null,cr=db.criteria[p.sport];
+  const p=byId(db.players,R.id),a=id?byId(p.assessments,id):null,cr=critFor(p);
   const fields=[{k:'date',label:'Dato',type:'date',value:a?a.date:today()}];
   GROUPS.forEach(g=>{const cs=cr.filter(c=>c.g===g);if(!cs.length)return;fields.push({h:g});cs.forEach(c=>{const last=series(p,c.n).pop();fields.push({k:'c_'+c.n,label:c.n,type:'range',min:0,value:a?(a.scores[c.n]||0):(last||0)})})});
   openForm({title:a?'Rediger vurdering':'Ny vurdering – '+p.name,noFocus:true,fields,
-    save:v=>{const sc={};cr.forEach(c=>{if(v['c_'+c.n])sc[c.n]=v['c_'+c.n]});if(a){a.date=v.date||a.date;a.scores=sc}else p.assessments.push({id:uid(),date:v.date||today(),scores:sc})},
+    save:v=>{const sc=a?Object.assign({},a.scores):{};cr.forEach(c=>{if(v['c_'+c.n])sc[c.n]=v['c_'+c.n];else delete sc[c.n]});if(a){a.date=v.date||a.date;a.scores=sc}else p.assessments.push({id:uid(),date:v.date||today(),scores:sc})},
     del:a&&(()=>{p.assessments=p.assessments.filter(x=>x!==a)}),delLabel:'Slett vurdering',confirm:'Slette vurderingen?'});
 }
 function noteForm(type,id){
@@ -718,10 +951,14 @@ function noteForm(type,id){
 }
 function itemForm(id){
   const p=byId(db.plans,R.id),it=id?byId(p.items,id):null;
-  const f=[];if(!it||!it.exId)f.push({k:'text',label:'Navn',type:'text',value:it?it.text:''});
+  const f=[];if(!it||!it.exId)f.push({k:'text',label:'Navn',type:'text',value:it?it.text:''},{k:'cat',label:'Kategori i øvelsesbanken',type:'select',options:CATS,value:'Annet'});
   f.push({k:'min',label:'Minutter',type:'num',value:it?it.min:null},{k:'note',label:'Notat',type:'area',rows:2,value:it?it.note:''});
   openForm({title:it?'Rediger post':'Egen post',req:it&&it.exId?null:'text',reqLabel:'navn',fields:f,
-    save:v=>{if(it){if('text' in v)it.text=v.text;it.min=v.min;it.note=v.note}else p.items.push({id:uid(),exId:null,text:v.text,min:v.min,note:v.note})},
+    save:v=>{
+      const n0=db.exercises.length;
+      if(it){if(!it.exId&&v.text){it.exId=exIn(db,p.sport,v.text,v.cat).id;delete it.text}it.min=v.min;it.note=v.note}
+      else p.items.push({id:uid(),exId:exIn(db,p.sport,v.text,v.cat).id,min:v.min,note:v.note});
+      if(db.exercises.length>n0)toast('Lagt til i øvelsesbanken')},
     del:it&&(()=>{p.items=p.items.filter(x=>x!==it)}),delLabel:'Fjern fra plan',confirm:'Fjerne posten?'});
 }
 function rdForm(id){
@@ -732,12 +969,13 @@ function rdForm(id){
 }
 function critForm(name){
   const c=name?crit().find(x=>x.n===name):null;
-  openForm({title:c?'Rediger kriterium':'Nytt kriterium',req:'n',reqLabel:'navn',fields:[{k:'n',label:'Navn',type:'text',value:c?c.n:''},{k:'g',label:'Gruppe',type:'select',options:GROUPS,value:c?c.g:GROUPS[2]}],
+  openForm({title:c?'Rediger kriterium':'Nytt kriterium',req:'n',reqLabel:'navn',fields:[{k:'n',label:'Navn',type:'text',value:c?c.n:''},{k:'g',label:'Gruppe',type:'select',options:GROUPS,value:c?c.g:GROUPS[2]},{k:'o',label:'Gjelder',type:'select',options:['Alle spillere','Kun utespillere'],value:c&&c.o?'Kun utespillere':'Alle spillere'}],
     save:v=>{
-      if(!c){crit().push({n:v.n,g:v.g});return}
+      const o=v.o==='Kun utespillere'?1:0;
+      if(!c){const n={n:v.n,g:v.g};if(o)n.o=1;crit().push(n);return}
       if(v.n!==c.n){if(crit().some(x=>x.n===v.n)){toast('Finnes fra før');return}
         db.players.filter(p=>p.sport===db.sport).forEach(p=>p.assessments.forEach(a=>{if(c.n in a.scores){a.scores[v.n]=a.scores[c.n];delete a.scores[c.n]}}))}
-      c.n=v.n;c.g=v.g},
+      c.n=v.n;c.g=v.g;if(o)c.o=1;else delete c.o},
     del:c&&(()=>{const i=crit().indexOf(c);crit().splice(i,1)}),delLabel:'Slett kriterium',confirm:'Slette kriteriet? Tidligere vurderinger beholdes, men vises ikke.'});
 }
 
@@ -888,8 +1126,8 @@ function stats(){
   /* lagets utvikling per gruppe */
   const dates=[...new Set(ps.flatMap(p=>p.assessments.map(a=>a.date)))].filter(inR).sort();
   if(dates.length>=2){
-    const ser=GROUPS.map((g,gi)=>({name:g,color:SER[gi],pts:dates.map(d=>{const v=[];ps.forEach(p=>p.assessments.filter(a=>a.date===d).forEach(a=>crit().filter(c=>c.g===g).forEach(c=>{if(a.scores[c.n]!=null)v.push(a.scores[c.n])})));return avg(v)})}));
-    h+=card('Lagets utvikling','Gjennomsnitt av alle vurderinger per gruppe, over tid.',lineChart({xs:dates.map(sd),series:ser,min:0,max:10,label:'Lagsnitt per kriteriegruppe',tt:i=>fd(dates[i])})+tableView(['Dato'].concat(GROUPS),dates.map((d,i)=>[fd(d)].concat(ser.map(s=>f1(s.pts[i]))))));
+    const ser=GROUPS.map((g,gi)=>({name:g,color:SER[gi],pts:dates.map(d=>{const v=[];ps.forEach(p=>p.assessments.filter(a=>a.date===d).forEach(a=>crit().filter(c=>c.g===g).forEach(c=>{if(a.scores[c.n]!=null)v.push(a.scores[c.n])})));return avg(v)})})).filter(x=>x.pts.some(v=>v!=null));
+    h+=card('Lagets utvikling','Gjennomsnitt av alle vurderinger per gruppe, over tid.',lineChart({xs:dates.map(sd),series:ser,min:0,max:10,label:'Lagsnitt per kriteriegruppe',tt:i=>fd(dates[i])})+tableView(['Dato'].concat(ser.map(x=>x.name)),dates.map((d,i)=>[fd(d)].concat(ser.map(s=>f1(s.pts[i]))))));
   }else{
     const cs=crit().map(c=>({l:c.n,s:c.g,v:avg(ps.map(p=>series(p,c.n).pop()).filter(x=>x!=null))})).filter(x=>x.v!=null).sort((a,b)=>b.v-a.v);
     if(cs.length)h+=card('Lagets nivå nå','Snitt per kriterium. Gjør vurderinger på flere datoer for å se utvikling over tid.','')+hbars(cs,10);
@@ -927,6 +1165,10 @@ function stats(){
     h+='<h2>Spillere × kriterier</h2><div class="tw"><table class="tbl hm"><thead><tr><th>Spiller</th>'+hc.map(c=>'<th>'+esc(c.n)+'</th>').join('')+'</tr></thead><tbody>'+hp.map(x=>'<tr><td><button data-a="openpl" data-id="'+x.p.id+'" style="font:inherit;text-align:left">'+esc(x.p.name)+'</button></td>'+hc.map(c=>'<td>'+cell(series(x.p,c.n).pop())+'</td>').join('')+'</tr>').join('')+'</tbody></table></div><div class="sub" style="margin:6px 16px">Mørkere blå = høyere score. Siste vurdering per kriterium.</div>';
   }
 
+  /* mål og målgivende */
+  {const ms=db.matches.filter(m=>m.sport===db.sport);
+   const t=sportPl().map(p=>{let g=0,a=0;ms.forEach(m=>{const x=(m.players||{})[p.id]||{};g+=x.goals||0;a+=x.assists||0});return {p,g,a}}).filter(x=>x.g+x.a>0).sort((x,y)=>(y.g+y.a)-(x.g+x.a)||y.g-x.g||x.p.name.localeCompare(y.p.name,'nb'));
+   if(t.length)h+=card('Mål og målgivende','Sum fra alle kamper.',hbars(t.map(x=>({l:x.p.name,s:x.g+' mål · '+x.a+' målgivende',v:x.g+x.a})),t[0].g+t[0].a));}
   /* spillertabell */
   if(P.length){
     const srt=P.slice().sort((a,b)=>(b.avg||0)-(a.avg||0));
@@ -957,6 +1199,8 @@ if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0){
   navigator.serviceWorker.register('sw.js').then(r=>{SWREG=r}).catch(()=>{});
   navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!had)return;const b=document.createElement('button');b.className='toast';b.style.pointerEvents='auto';b.textContent='Ny versjon er klar – trykk for å laste på nytt';b.onclick=()=>location.reload();document.body.appendChild(b)});
 }
+document.addEventListener('visibilitychange',()=>{if(document.hidden)HID=Date.now();else if(pinGet()&&HID&&Date.now()-HID>60000)lockNow()});
+document.addEventListener('keydown',e=>{if(!LOCKED)return;if(/^\d$/.test(e.key))A.pin({id:e.key});else if(e.key==='Backspace')A.pinback()});
 applyTheme();
 render();
 </script>
