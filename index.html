@@ -807,7 +807,8 @@ const A={
   pedit:()=>{const p=byId(db.players,R.id);openForm({title:'Rediger spiller',req:'name',reqLabel:'navn',fields:[{k:'name',label:'Navn',type:'text',value:p.name},{k:'role',label:'Rolle',type:'select',options:['Utespiller','Keeper',BOTH],value:roleTxt(p)},{k:'pos',label:'Posisjon på banen',type:'text',ph:'F.eks. back, midt, kant',value:p.pos||''},{k:'wishPos',label:'Ønsker å spille',type:'text',ph:'Ønsket posisjon',value:p.wishPos||''},{k:'status',label:'Status',type:'select',options:['Tilgjengelig','Skadet'],value:p.inj?'Skadet':'Tilgjengelig'},{k:'injnote',label:'Skade / merknad',type:'text',ph:'F.eks. ankel, tilbake om 2 uker',value:p.inj?p.inj.note:''}],save:v=>{p.name=v.name;p.gk=v.role==='Keeper';p.both=v.role===BOTH;p.pos=v.pos||'';p.wishPos=v.wishPos||'';setInjury(p,v.status==='Skadet',v.injnote)},del:()=>{db.comps.forEach(c=>{c.players=c.players.filter(i=>i!==p.id);delete c.points[p.id]});db.attendance.forEach(a=>delete a.marks[p.id]);db.matches.forEach(m=>{m.roster=(m.roster||[]).filter(i=>i!==p.id);delete m.players[p.id];if(m.lineup){Object.keys(m.lineup.slots).forEach(k=>{if(m.lineup.slots[k]===p.id)delete m.lineup.slots[k]});m.lineup.bench=m.lineup.bench.filter(i=>i!==p.id)}});db.players=db.players.filter(x=>x!==p);R.id=null},delLabel:'Slett spiller',confirm:'Slette spilleren med alle vurderinger og notater?'})},
   plsub:d=>{Q.plsub=d.id;render(true)},
   snaprestore:()=>{const r=localStorage.getItem(KEY+'.snap');if(!r)return;if(!confirm('Gjenopprette forrige tilstand? Dagens data legges i stedet i «forrige tilstand», så du kan bytte tilbake.'))return;try{const d=migrate(JSON.parse(r)),cur=JSON.stringify(db);db=d;save();localStorage.setItem(KEY+'.snap',cur);R={tab:'stat',id:'settings'};render();toast('Gjenopprettet')}catch(e){toast('Kunne ikke gjenopprette')}},
-  upd:()=>{if(SWREG){SWREG.update().then(()=>toast('Sjekket. Er det en ny versjon, kommer en melding.')).catch(()=>toast('Kunne ikke sjekke (er du på nett?)'))}else toast('Oppdateringer sjekkes bare i den installerte nettversjonen')},
+  upd:()=>{if(location.protocol.indexOf('http')!==0){toast('Oppdateringer sjekkes bare i den installerte nettversjonen');return}if(SWREG)SWREG.update().catch(()=>{});checkNew(true)},
+  doupd:()=>applyUpdate(),
   range:d=>{Q.range=d.id;render(true)},
   settings:()=>{R.id='settings';render()},
   openpl:d=>{R={tab:'pl',id:d.id};render()},
@@ -1192,6 +1193,25 @@ document.addEventListener('change',e=>{
     const fr=new FileReader();fr.onload=()=>{try{const d=JSON.parse(fr.result);if(!d.players||!d.exercises||!d.criteria)throw 0;const fmt=t=>t?new Date(t).toLocaleString('nb-NO'):'ukjent tidspunkt';const older=d.modified&&db.modified&&d.modified<db.modified;if(confirm((older?'ADVARSEL: Sikkerhetskopien ('+fmt(d.modified)+') er ELDRE enn dataene på denne enheten ('+fmt(db.modified)+').\n\n':'')+'Erstatte alle data på denne enheten med sikkerhetskopien fra '+fmt(d.modified)+'?')){try{localStorage.setItem(KEY+'.snap',JSON.stringify(db))}catch(x){}db=migrate(d);save();R={tab:'stat',id:'settings'};render();toast('Gjenopprettet')}}catch(x){toast('Ugyldig fil')}};fr.readAsText(t.files[0]);t.value='';
   }
 });
+/* Oppdateringssjekk som går utenom nettleserens mellomlager (GitHub Pages bufrer filer i ca. 10 min) */
+let NEWSHOWN=false,LASTCHK=0;
+function checkNew(manual){
+  if(location.protocol.indexOf('http')!==0||typeof fetch!=='function')return Promise.resolve();
+  LASTCHK=Date.now();
+  return fetch('version.js?nc='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(t=>{
+    const m=/APP_VERSION\s*=\s*'([^']+)'/.exec(t);if(!m)return;
+    if(m[1]!==VER){if(!NEWSHOWN){NEWSHOWN=true;const b=document.createElement('button');b.className='toast';b.style.pointerEvents='auto';b.dataset.a='doupd';b.textContent='Ny versjon '+m[1]+' er klar – trykk for å oppdatere';document.body.appendChild(b)}}
+    else if(manual)toast('Du har siste versjon ('+VER+')');
+  }).catch(()=>{if(manual)toast('Kunne ikke sjekke (er du på nett?)')});
+}
+async function applyUpdate(){
+  toast('Oppdaterer…');
+  try{const rs=await navigator.serviceWorker.getRegistrations();await Promise.all(rs.map(r=>r.unregister()))}catch(e){}
+  try{const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}catch(e){}
+  location.replace(location.pathname+'?u='+Date.now()); // data i localStorage røres ikke
+}
+setTimeout(()=>checkNew(false),1500);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-LASTCHK>60000)checkNew(false)});
 let SWREG=null;
 if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0){

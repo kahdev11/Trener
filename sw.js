@@ -20,6 +20,7 @@ self.addEventListener('activate', e => {
 });
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+  if (new URL(e.request.url).searchParams.has('nc')) return; // oppdateringssjekk: alltid fra nettet
   e.respondWith(
     caches.match(e.request, { ignoreSearch: true })
       .then(r => r || fetch(e.request))

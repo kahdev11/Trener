@@ -1,8 +1,9 @@
 // Versjonsinfo. Øk APP_VERSION ved hver endring – da oppdaterer mobilen seg automatisk
 // og versjonen vises under Statistikk → ⚙︎ → Versjon.
-self.APP_VERSION = '1.3.0';
-self.APP_DATE = '2026-11-13';
+self.APP_VERSION = '1.3.1';
+self.APP_DATE = '2026-11-14';
 self.APP_CHANGES = [
+  '1.3.1 – Raskere oppdatering: appen sjekker serveren direkte ved oppstart og når du kommer tilbake til den, og viser «Ny versjon er klar». Dataene røres ikke.',
   '1.3.0 – Feilretting: alle poster i en økt kan nå få score. Egne poster legges automatisk i øvelsesbanken (også eksisterende), og øvelser kan redigeres og slettes fra øvelsessiden.',
   '1.3.0 – Kampstatistikk: mål, målgivende, redninger og kort per spiller med ett trykk, med toppliste i Statistikk.',
   '1.3.0 – Rask oppmøte: «Oppmøte i dag» foreslår dagens økt fra planen. Skadde spillere markeres automatisk og teller ikke mot oppmøtet.',
